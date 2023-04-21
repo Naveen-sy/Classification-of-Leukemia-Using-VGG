@@ -1,0 +1,228 @@
+/* Set the font family and background color for the entire page */
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  
+}
+
+/* Style the header */
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+	
+  
+}
+
+/* Style the logo */
+h1 {
+  margin: 0;
+}
+
+/* nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+  padding: 0 20px;
+} */
+
+/* Style the navigation menu */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 100px;
+  
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Style the main content section */
+main {
+  margin: auto;
+  max-width: 800px;
+  padding: 20px;
+  
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: justify;
+  
+}
+
+
+section {
+  
+  background-color: white;
+  padding: 25px;
+  margin-bottom: 2px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-top: 70px;
+  height: calc(110vh - -10px);
+  
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+/* Style the button */
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #3e8e41; /* Dark green */
+}
+
+/* Style the footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+html, body {
+  scroll-behavior: smooth;
+  scroll-padding-top: 180px;
+}
+
+#patients-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+form {
+  display: flex;
+  flex-direction: column ;
+  margin-top: 50px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  width: 150px;
+  margin-right: 20px;
+}
+
+.form-field input[type="text"], 
+.form-field input[type="number"], 
+.form-field input[type="tel"], 
+.form-field select {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 20px;
+  background-color: lightgray;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+    label {
+text-align: left;
+
+}
+
+.social-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-media a {
+  margin: 0 10px;
+  font-size: 1.5rem;
+  color: #999;
+}
+
+.social-media a:hover {
+  color: #333;
+}
+
+.fa-facebook {
+  
+  color: white;
+}
+
+.fa-twitter {
+  
+  color: white;
+}
+
+.fa-linkedin {
+ 
+  color: white;
+}
+
+.fa-instagram {
+  
+  color: white;
+}

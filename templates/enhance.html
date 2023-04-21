@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    body{
+      background-image: url("static/image/2.jpg"); 
+          
+    }
+    h1 {
+        font-family: Impact, sans-serif;
+        font-size: 3em;
+        font:60px Impact;
+        text-align: center;
+        margin-top: 30px;
+        position: relative;
+        
+        transition: all 0.3s ease-in-out;
+      }
+      h1:hover span:nth-child(odd) {
+        transform: translateY(-10px);
+      }
+      h1:hover span:nth-child(even) {
+        transform: translateY(10px);
+      }
+      h1 span {
+        display: inline-block;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+      }
+  </style>
+
+  <body>
+      <h1>
+        <span>L</span>
+        <span>E</span>
+        <span>U</span>
+        <span>K</span>
+        <span>E</span>
+        <span>M</span>
+        <span>I</span>
+        <span>A</span>
+        <span> </span>
+        <span>D</span>
+        <span>E</span>
+        <span>T</span>
+        <span>E</span>
+        <span>C</span>
+        <span>T</span>
+        <span>I</span>
+        <span>O</span>
+        <span>N</span>
+      </h1><br>
+
+    <form method="post" enctype="multipart/form-data"> <!-- action="/process" method="post" enctype="multipart/form-data" -->
+      <!-- <input type="file" id="file-input">
+      <button type="button" >Upload and Enhance</button> -->
+  
+      <label for="image">Select an image to upload:</label>
+        <input type="file" id="file-input" name="image"><br><br>
+       <!--  <input type="submit" onclick="uploadImage()" value="Upload and Analyze Image"> -->
+        <button type="button" onclick="uploadImage()">Upload and Enhance</button>
+        
+    <!-- </form>
+
+    <form action="/submit" method="post" enctype="multipart/form-data"> -->
+     <!--  <input type="file" name="image"><br><br> -->
+
+      <button type="submit" formaction="/submit">Detect</button>
+      
+      </form>
+      
+     <!--  {% if prediction %}
+      <img src="{{img_path}}" height="400px" width="400px">
+      <h2 style="color:green;"> Your Prediction   : <i style="color:red;"> {{prediction}} </i></h2>
+      
+      {% endif %}
+       -->
+
+
+  <!-- <h2>Enhanced Image</h2> -->
+
+  <br><br>
+  <img id="enhanced-image" width="689" height="466">
+  <script>
+    function uploadImage() {
+      const fileInput = document.getElementById('file-input');
+      const file = fileInput.files[0];
+      const formData = new FormData();
+      formData.append('image', file, file.name);
+      fetch('/enhance', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.blob())
+      .then(blob => {
+        const url = URL.createObjectURL(blob);
+        const img = document.getElementById('enhanced-image');
+        img.src = url;
+      });
+    }
+  </script>
+
+<br><br>
+
+
+</body>
+</html>

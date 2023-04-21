@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Leukemia Detection</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles1.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- <link rel="stylesheet" href="styles1.css"> -->
+<style>
+/* 	.header {
+		height: 250px;
+}
+ */
+	h1 {
+        font-family: Impact, sans-serif;
+        font-size: 3em;
+        font:60px Impact;
+        text-align: center;
+        margin-top: 30px;
+        position: relative;
+        
+        transition: all 0.3s ease-in-out;
+      }
+      h1:hover span:nth-child(odd) {
+        transform: translateY(-10px);
+      }
+      h1:hover span:nth-child(even) {
+        transform: translateY(10px);
+      }
+      h1 span {
+        display: inline-block;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+      }
+
+
+
+	/*   .home {
+  padding-top: 100px; /* add some padding to push the content down */
+/* } */
+ 
+</style>
+
+<!-- 	<script>
+		function redirect() {
+			event.preventDefault();
+			const name = document.getElementById("name").value;
+			const age = document.getElementById("age").value;
+			const dob = document.getElementById("dob").value;
+			const gender = document.getElementById("gender").value;
+			const bloodGroup = document.getElementById("bloodGroup").value;
+			const phone = document.getElementById("phone").value;
+			const address = document.getElementById("address").value;
+
+					// Create an object with the form data
+		const patientData = {
+			name,
+			age,
+			dob,
+			gender,
+			bloodGroup,
+			phone,
+			address
+		};
+		
+		// Convert the object to a JSON string
+		const patientDataJson = JSON.stringify(patientData);
+		
+		// Store the JSON string in localStorage
+		localStorage.setItem("patientData", patientDataJson);
+		
+		// Navigate to the other HTML file to display the data
+		window.location.href = "/upload";
+	}
+</script> -->
+
+</head>
+<body>
+
+
+	<header>
+		 <h1>
+    <span>L</span>
+    <span>E</span>
+    <span>U</span>
+    <span>K</span>
+    <span>E</span>
+    <span>M</span>
+    <span>I</span>
+    <span>A</span>
+    <span> </span>
+    <span>D</span>
+    <span>E</span>
+    <span>T</span>
+    <span>E</span>
+    <span>C</span>
+    <span>T</span>
+    <span>I</span>
+    <span>O</span>
+    <span>N</span>
+  </h1>
+		<nav>
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#patients-details">Patients Details</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main><br><br><br><br><br>
+		<section>
+      <center>
+			<img src="static/image/1.jpeg" alt="Image" height="300" width="250">
+    </center>
+      <p>Leukemia is a type of cancer that affects the blood and bone marrow. Early detection of leukemia is crucial for effective treatment and management of the disease. One method of detection is through the analysis of blood smear images, which can reveal abnormalities in the shape, size, and number of blood cells. 
+		However, these images can be difficult to interpret due to variations in lighting and contrast, which can obscure important features.</p>
+
+		<p>One technique for enhancing the visibility of these features is histogram equalization. Histogram equalization is a method of adjusting the contrast of an image by redistributing the brightness values of the pixels. 
+		This technique can improve the visibility of features that are difficult to see due to variations in lighting and contrast.</p>
+		
+	<p>By applying histogram equalization to blood smear images, it is possible to enhance the contrast and visibility of important features such as abnormal blood cells, which can aid in the detection and diagnosis of leukemia. 
+		This technique can be used in combination with other diagnostic methods to improve the accuracy of leukemia detection and increase the chances of successful treatment.</p>
+	</section>
+
+	<section id="patients-details" >
+			<div class="header">
+			  <h2>Patients Details</h2>
+			</div>
+
+			<form method="post" action="{{ url_for('form') }}" enctype="multipart/form-data"> <!-- onsubmit="submitForm(event)"> -->
+				<div class="form-field">
+					<label for="name">Name:</label>
+					<input type="text" id="name" name="name" required>
+				</div>
+				
+				<div class="form-field">
+					<label for="age">Age:</label>
+					<input type="number" id="age" name="age" min="0" max="120" required>
+				</div>
+				
+				<div class="form-field">
+					<label for="dob">Date of Birth:</label>
+					<input type="date" id="dob" name="dob" required>
+				</div>
+				
+				<div class="form-field">
+					<label for="gender">Gender:</label>
+					<select id="gender" name="gender" required>
+						<option value="">-- Select --</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+						<option value="Other">Other</option>
+					</select>
+				</div>
+				
+				<div class="form-field">
+					<label for="bloodGroup">Blood Group:</label>
+					<input type="text" id="bloodGroup" name="bloodGroup" required>
+				</div>
+				
+				<div class="form-field">
+					<label for="phone">Phone Number:</label>
+					<input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+				</div>
+				
+				<div class="form-field">
+					<label for="address">Address:</label>
+					<input type="text" id="address" name="address" required>
+				</div>
+				
+					<!-- <a href="/upload"><button onclick="submitForm()">Enhance & Detect</button></a> -->
+					<!-- <input type="submit" value="Submit"> -->
+					<!-- <input type="submit" value="Save Details"> -->
+					<input type="submit"  value="Submit">
+					
+				</form>
+			<!-- <a href="/upload"><button">Check</button></a> -->
+		</section>
+		
+    
+	</main>
+	<footer id="contact">
+		<div class="social-media">
+		  <a href="https://www.facebook.com/sriramakrishnaenggcollege/"><i class="fa fa-facebook"></i></a>
+		  <a href="https://twitter.com/NaveenRag0104/"><i class="fa fa-twitter"></i></a>
+		  <a href="https://www.instagram.com/chit_tesh_45/"><i class="fa fa-instagram"></i></a>
+		  <a href="https://www.linkedin.com/in/sivasuriyan-sk1123/"><i class="fa fa-linkedin"></i></a>
+		</div>
+		<h5>&copy; Leukemia Detection</h5>
+	  </footer>
+
+
+</body>
+</html>

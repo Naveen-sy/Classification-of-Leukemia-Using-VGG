@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    body{
+      background-image: url("static/image/2.jpg");
+
+			display: list-item;
+			grid-template-columns: repeat(2, 1fr);
+			grid-gap: 20px;
+             
+    }
+		
+    h2 {
+			font-size: 32px;
+			font-weight: bold;
+			margin-top: 0;
+			margin-left: 30px ;
+      text-align: center;
+			
+		}
+    .bt{
+      
+      text-align: right;
+    }
+    
+    h1 {
+        font-family: Impact, sans-serif;
+        font-size: 3em;
+        font:60px Impact;
+        text-align: center;
+        margin-top: 30px;
+        position: relative;
+        
+        transition: all 0.3s ease-in-out;
+      }
+      h1:hover span:nth-child(odd) {
+        transform: translateY(-10px);
+      }
+      h1:hover span:nth-child(even) {
+        transform: translateY(10px);
+      }
+      h1 span {
+        display: inline-block;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+      }
+      .new{
+        text-align: left;
+        font-size: 40px;
+      }
+   
+
+
+  </style>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/sqlite3/5.0.2/sqlite3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js">
+	</script>
+  <body>
+    <h1>
+      <span>L</span>
+      <span>E</span>
+      <span>U</span>
+      <span>K</span>
+      <span>E</span>
+      <span>M</span>
+      <span>I</span>
+      <span>A</span>
+      <span> </span>
+      <span>D</span>
+      <span>E</span>
+      <span>T</span>
+      <span>E</span>
+      <span>C</span>
+      <span>T</span>
+      <span>I</span>
+      <span>O</span>
+      <span>N</span>
+    </h1><br>
+
+    <form method="post" enctype="multipart/form-data"> <!-- action="/process" method="post" enctype="multipart/form-data" -->
+      <!-- <input type="file" id="file-input">
+      <button type="button" >Upload and Enhance</button> -->
+  
+      <!-- <label for="image">Select an image to upload:</label> -->
+        <!-- <input type="file" id="file-input" name="image"> --><br><br>
+       <!--  <input type="submit" onclick="uploadImage()" value="Upload and Analyze Image"> -->
+       <!--  <button type="button" >Upload and Enhance</button> -->
+        
+    <!-- </form>
+
+    <form action="/submit" method="post" enctype="multipart/form-data"> -->
+     <!--  <input type="file" name="image"><br><br> -->
+
+     <!-- <a href="#"><button>Detect Again</button></a> -->
+     
+      <h1 class="new">Your Result -</h1>
+
+
+      <!-- <button type="submit" onclick="/upload">Detect Again</button> --><br>
+      <center>
+      <img src="static/enhanced_image.jpg" width="689" height="466"></center>
+      </form>
+      <br>
+      <!-- <button id="button" onclick="printPDF()">Generate PDF</button><br><br> -->
+
+
+      <div>
+        <center> <br>
+      
+      {% if prediction %}
+      <!-- <img src="{{img_path}}" height="400px" width="400px"> -->
+      <h2 style="color:green;"> Your Prediction   : <i style="color:red;"> {{prediction}} </i></h2>
+      
+      {% endif %}
+    </center>
+    </div>
+
+<br><br><br><br>
+    <div class="card" id="makepdf">
+      <div>
+        <div class="logo-container">
+        <img src="static/logo.png" alt="Logo" width="100" height="100">
+      
+        <h2>Leukemia detection by enhancing regular image using Histogram Equalization</h2></div>
+<br>
+        <div class="row">
+          <div class="label">Name: </div>
+          <div class="value" >{{ details[0] }}</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Age:</div>
+          <div class="value">{{ details[1] }}</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Date of Birth:</div>
+          <div class="value">{{ details[2] }}</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Gender:</div>
+          <div class="value">{{ details[3] }}</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Blood Group:</div>
+          <div class="value">{{ details[4] }}</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Phone Number:</div>
+          <div class="value">{{ details[5] }}</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Address:</div>
+          <div class="value">{{ details[6] }}</div>
+        </div>
+        
+        <div class="row">
+          <div class="label">Type & Accuracy</div>
+          <div class="value">{{prediction}}</div>
+        </div>
+
+
+        <div class="row">
+          <div class="label">Image</div>
+          <div class="value">
+            <img src="static/enhanced_image.jpg" width="300" height="200">
+          </div>
+        </div>
+
+      
+        
+      </div>
+      </div><div class="bt">
+      <button onclick="printPDF('{{ details[0] }}')">Generate PDF</button>
+      <a href="/upload"><button>Detect Again</button></a></div>
+    </div>
+
+
+ <!--    <script data-name="{{ details[0] }}">
+    
+    function print(){
+  var button = document.getElementById("button");
+  var makepdf = document.getElementById("makepdf");
+  var name1 = document.currentScript.getAttribute('data-name');
+
+  button.addEventListener("click", function () {
+    var filename = 'Test_Report_' + name1 + '.pdf';
+    html2pdf().from(makepdf).set({
+      filename: filename
+    }).save();
+  });
+}
+
+
+    </script> -->
+    <script >
+      function printPDF(name) {
+        
+        var makepdf = document.getElementById("makepdf");
+        var filename = 'Test_Report_' + name + '.pdf';
+        html2pdf().from(makepdf).set({
+          filename: filename
+        }).save();
+      
+      }
+    </script>
+    
+</body>
+</html>
